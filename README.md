@@ -13,7 +13,7 @@ L'objectiu és crear un model de machine learning que sigui capaç de predir si 
 
 1. **Atributs numèrics i categòrics**: El dataset conté tant atributs numèrics (com `creationTime` i `gameDuration`) com atributs discrets (com `GameId` i els identificadors de campions). 
 2. **Dades Nans**: No s'han detectat valors nuls en el dataset.
-3. **Desbalanceig de les dades**: Es va observar que les dades no estan desbalancejades.
+3. **Desbalanceig de les dades**: Es va observar que les dades estan desbalancejades en certs atributs.
 4. **Relació entre les variables i la classe a predir**: A simple vista, no es va trobar una relació directa entre les característiques de la partida i el resultat (guanyador/perdedor).
 
 ## Preprocessament de les Dades
@@ -28,7 +28,7 @@ L'objectiu és crear un model de machine learning que sigui capaç de predir si 
    - **`firstTower`**: Els valors de `firstTower=0` (cap torre destruïda) han estat substituïts per la moda, ja que els valors 0 podrien indicar una partida interrompuda.
 
 3. **Transformació de campions i summoners**:
-   - Els valors `t1_champ1id`, `t1_champ2id`, ... es van substituir pels noms dels campions corresponents mitjançant un diccionari obtingut a partir de l'arxiu `champion_info`.
+   - Els valors `t1_champ1id`, `t1_champ2id`, ... es van substituir pels tipus dels campions corresponents mitjançant un diccionari obtingut a partir de l'arxiu `champion_info`.
    - Es va realitzar una transformació One-Hot Encoding en les columnes acabades en `sum1` i `sum2` per tal de convertir els valors numèrics dels "summoners" en variables binàries. Això ens permet tractar els summoners com atributs independents.
 
 4. **Metrica d'Avaluació**: Com que la classe objectiu (`Winner`) està equilibrada, es va optar per utilitzar l'*accuracy* com a mètrica principal per avaluar el model.
